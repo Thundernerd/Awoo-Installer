@@ -72,6 +72,9 @@ namespace inst::ui {
         this->exitMenuItem = pu::ui::elm::MenuItem::New("main.menu.exit"_lang);
         this->exitMenuItem->SetColor(COLOR("#FFFFFFFF"));
         this->exitMenuItem->SetIcon("romfs:/images/icons/exit-run.png");
+        this->tinfoilMenuItem = pu::ui::elm::MenuItem::New("hello");
+        this->tinfoilMenuItem->SetColor(COLOR("#FFFFFFFF"));
+        this->tinfoilMenuItem->SetIcon("romfs:/images/icons/exit-run.png");
         if (std::filesystem::exists(inst::config::appDir + "/awoo_main.png")) this->awooImage = Image::New(410, 190, inst::config::appDir + "/awoo_main.png");
         else this->awooImage = Image::New(410, 190, "romfs:/images/awoos/5bbdbcf9a5625cd307c9e9bc360d78bd.png");
         this->eggImage = Image::New(410, 190, "romfs:/images/awoos/a8cb40e465dadaf9708c9b1896777ce6.png");
@@ -86,6 +89,7 @@ namespace inst::ui {
         this->optionMenu->AddItem(this->sigPatchesMenuItem);
         this->optionMenu->AddItem(this->settingsMenuItem);
         this->optionMenu->AddItem(this->exitMenuItem);
+        this->optionMenu->AddItem(this->tinfoilMenuItem);
         this->Add(this->optionMenu);
         this->Add(this->awooImage);
         this->Add(this->eggImage);
@@ -128,6 +132,11 @@ namespace inst::ui {
         mainApp->Close();
     }
 
+    void MainPage::tinfoilMenuItem_Click() {
+        mainApp->FadeOut();
+        mainApp->Close();
+    }
+
     void MainPage::settingsMenuItem_Click() {
         mainApp->LoadLayout(mainApp->optionspage);
     }
@@ -156,6 +165,9 @@ namespace inst::ui {
                     break;
                 case 5:
                     MainPage::exitMenuItem_Click();
+                    break;
+                case 6:
+                    MainPage::tinfoilMenuItem_Click();
                     break;
                 default:
                     break;
