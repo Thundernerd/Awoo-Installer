@@ -2,6 +2,7 @@
     "main":{
         "menu": {
             "sd": "Install from SD card",
+            "tfl": "Install from tinfoil index",
             "net": "Install over LAN or internet",
             "usb": "Install over USB",
             "sig": "Manage signature patches",
