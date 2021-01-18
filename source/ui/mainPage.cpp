@@ -57,9 +57,6 @@ namespace inst::ui {
         this->installMenuItem = pu::ui::elm::MenuItem::New("main.menu.sd"_lang);
         this->installMenuItem->SetColor(COLOR("#FFFFFFFF"));
         this->installMenuItem->SetIcon("romfs:/images/icons/micro-sd.png");
-        this->tinfoilMenuItem == pu::ui::elm::MenuItem::New("main.menu.tfl"_lang);
-        this->tinfoilMenuItem->SetColor(COLOR("#FFFFFFFF"));
-        this->tinfoilMenuItem->SetIcon("romfs:/images/icons/cloud-download.png");
         this->netInstallMenuItem = pu::ui::elm::MenuItem::New("main.menu.net"_lang);
         this->netInstallMenuItem->SetColor(COLOR("#FFFFFFFF"));
         this->netInstallMenuItem->SetIcon("romfs:/images/icons/cloud-download.png");
@@ -89,7 +86,6 @@ namespace inst::ui {
         this->optionMenu->AddItem(this->sigPatchesMenuItem);
         this->optionMenu->AddItem(this->settingsMenuItem);
         this->optionMenu->AddItem(this->exitMenuItem);
-        this->optionMenu->AddItem(this->tinfoilMenuItem);
         this->Add(this->optionMenu);
         this->Add(this->awooImage);
         this->Add(this->eggImage);
@@ -136,10 +132,6 @@ namespace inst::ui {
         mainApp->LoadLayout(mainApp->optionspage);
     }
 
-    void MainPage::tinfoilMenuItem_Click(){
-        MainPage::installMenuItem_Click();
-    }
-
     void MainPage::onInput(u64 Down, u64 Up, u64 Held, pu::ui::Touch Pos) {
         if (((Down & KEY_PLUS) || (Down & KEY_MINUS) || (Down & KEY_B)) && mainApp->IsShown()) {
             mainApp->FadeOut();
@@ -165,8 +157,6 @@ namespace inst::ui {
                 case 5:
                     MainPage::exitMenuItem_Click();
                     break;
-                case 6:
-                    MainPage::tinfoilMenuItem_Click();
                 default:
                     break;
             }
